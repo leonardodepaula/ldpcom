@@ -1,53 +1,10 @@
 <template>
   <div class="wrapper">
-		<nav id="sidebar" class="sidebar js-sidebar">
-			<div class="sidebar-content js-simplebar">
-				<ul class="sidebar-nav mt-3">
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="#">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="#">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
-            </a>
-					</li>
-				</ul>
-			</div>
-		</nav>
+		<SideBar />
 
 		<div class="main">
-			<nav class="navbar navbar-expand navbar-light navbar-bg">
-				<a class="sidebar-toggle js-sidebar-toggle">
-          <i class="hamburger align-self-center"></i>
-        </a>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="h1 nav-link mb-0" href="/">Leonardo de Paula</a>
-          </li>
-        </ul>
-          
-
-				<div class="navbar-collapse collapse">
-					<ul class="navbar-nav navbar-align">
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
-                <i class="align-middle" data-feather="settings"></i>
-              </a>
-
-							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                <img src="./assets/logo.png" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark">Leonardo de Paula</span>
-              </a>
-							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="@"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
-								<a class="dropdown-item" href="#">Log out</a>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</nav>
+			
+			<NavBar />
 
 			<main class="content">
 				<div class="container-fluid p-0">
@@ -58,7 +15,7 @@
 						<div class="col-12">
 							<div class="card">
 								<div class="card-header bg-primary">
-									<h5 class="card-title mb-0 text-white">Empty card</h5>
+									<h5 class="card-title mb-0 text-white">teste</h5>
 								</div>
 								<div class="card-body">
                   <!-- Button trigger modal -->
@@ -116,10 +73,15 @@
 
 <script>
 
+import SideBar from "./components/SideBar.vue"
+import NavBar from "./components/NavBar.vue"
+
 export default {
   name: 'App',
   components: {
-  }
+		SideBar,
+		NavBar,
+  },
 }
 </script>
 
