@@ -25,7 +25,7 @@ def get_db() -> Generator:
 #### Authentication ####
 ########################
 
-reusable_oauth2 = OAuth2PasswordBearer(tokenUrl='auth/login/access-token')
+reusable_oauth2 = OAuth2PasswordBearer(tokenUrl='auth/get-access-token')
 
 def get_current_user(db: Session = Depends(get_db), token: str = Depends(reusable_oauth2)) -> models.User:
     try:
@@ -46,4 +46,4 @@ def get_current_active_user(current_user: models.User = Depends(get_current_user
 def get_current_active_superuser(current_user: models.User = Depends(get_current_user)) -> models.User:
     if not crud.user.is_superuser(current_user):
         raise HTTPException(status_code=400, detail="The user doesn't have enough privileges")
-    return current_use
+    return current_user
