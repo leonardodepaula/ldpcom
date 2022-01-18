@@ -20,7 +20,7 @@
 								<div class="card-body">
                   <!-- Button trigger modal -->
                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Launch demo modal
+                    {{ message.message }}
                   </button>
 
                   <!-- Modal -->
@@ -76,12 +76,24 @@
 import SideBar from "./components/SideBar.vue"
 import NavBar from "./components/NavBar.vue"
 
+import api from './services/api.js'
+
 export default {
   name: 'App',
   components: {
 		SideBar,
 		NavBar,
   },
+	data() {
+		return {
+			message: ''
+		}
+	},
+	mounted() {
+		api.get('/').then(response => {
+			this.message = response.data;
+		})
+	}
 }
 </script>
 
