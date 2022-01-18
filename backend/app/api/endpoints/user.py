@@ -9,7 +9,6 @@ from app.core import dependencies
 
 router = APIRouter()
 
-
 @router.get("/", response_model=List[schemas.User])
 def read_users(db: Session = Depends(dependencies.get_db), skip: int = 0, limit: int = 100) -> Any:
     """

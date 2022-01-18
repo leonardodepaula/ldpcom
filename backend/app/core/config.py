@@ -19,6 +19,8 @@ class Settings(BaseSettings):
     # Security
     SECRET_KEY: str = secrets.token_urlsafe(32)
     BACKEND_CORS_ORIGINS: Union[str, List[AnyHttpUrl]] = []
+    ENCRYPTION_ALGORITHM: str
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
 
     @validator("BACKEND_CORS_ORIGINS", pre=True)
     def assemble_cors_origins(cls, v: Union[str, List[str]]) -> Union[List[str], str]:
