@@ -19,6 +19,7 @@
     "jsvectormap": "1.3.3",
     "simplebar": "5.3.6",
     "vue": "^3.0.0",
+    "vue-router": "^4.0.12",
     "vuex": "^4.0.0-0",
     "vuex-persistedstate": "^4.1.0"
   },

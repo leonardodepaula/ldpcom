@@ -6,9 +6,16 @@
   >
     <div class="sidebar-content js-simplebar">
       <ul class="sidebar-nav mt-3">
+
         <li class="sidebar-item">
           <a class="sidebar-link" href="#">
             <i class="align-middle" data-feather="home"></i> <span class="align-middle">Homepage</span>
+          </a>
+        </li>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="#">
+            <i class="align-middle" data-feather="book"></i> <span class="align-middle">Artigos</span>
           </a>
         </li>
 
@@ -23,6 +30,7 @@
             <i class="align-middle" data-feather="mail"></i> <span class="align-middle">Contato</span>
           </a>
         </li>
+
       </ul>
     </div>
   </nav>
