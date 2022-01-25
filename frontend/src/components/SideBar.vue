@@ -8,15 +8,15 @@
       <ul class="sidebar-nav mt-3">
 
         <li class="sidebar-item">
-          <a class="sidebar-link" href="#">
+          <router-link class="sidebar-link" to="/">
             <i class="align-middle" data-feather="home"></i> <span class="align-middle">Homepage</span>
-          </a>
+          </router-link>
         </li>
 
         <li class="sidebar-item">
-          <a class="sidebar-link" href="#">
+          <router-link class="sidebar-link" to="/artigos">
             <i class="align-middle" data-feather="book"></i> <span class="align-middle">Artigos</span>
-          </a>
+          </router-link>
         </li>
 
         <li class="sidebar-item">
