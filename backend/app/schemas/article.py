@@ -1,6 +1,8 @@
 from typing import Optional
 from pydantic import BaseModel
 
+from app.schemas.user import User
+
 class ArticleBase(BaseModel):
 	slug: str
 	title: str
@@ -24,6 +26,7 @@ class ArticleInDBBase(ArticleBase):
 		orm_mode = True
   
 class Article(ArticleInDBBase):
+	author: User
 	pass
 
 class ArticleInDB(ArticleInDBBase):

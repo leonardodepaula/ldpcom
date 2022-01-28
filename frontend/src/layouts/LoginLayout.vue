@@ -11,17 +11,22 @@
               </div>
 							<div class="card-body">
 								<div class="m-sm-4">
-									<form @submit.prevent>
+									<form @submit.prevent="login">
 										<div class="mb-3">
 											<label class="form-label">Email</label>
-											<input class="form-control form-control-lg" type="email" name="email" placeholder="Email" />
+											<input class="form-control form-control-lg" type="email" name="email" placeholder="Email" v-model="email"/>
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Senha</label>
-											<input class="form-control form-control-lg" type="password" name="password" placeholder="Senha" />
+											<input class="form-control form-control-lg" type="password" name="password" placeholder="Senha" v-model="password"/>
 											<small class="ms-2">
                         <a href="#">Esqueceu a senha?</a>
                       </small>
+										</div>
+										<div class="mb-3" v-if="this.$store.getters['authentication/getErrorState']">
+											<div class="alert alert-danger" role="alert">
+												Erro no login.
+											</div>
 										</div>
 										<div>
 											<label class="form-check">
@@ -44,7 +49,21 @@
 
 <script>
 export default {
-
+	data() {
+		return {
+			email: '',
+			password: ''
+		}
+	},
+	methods: {
+		login() {
+			this.$store.dispatch({
+        type: 'authentication/login',
+				email: this.email,
+				password: this.password
+      })
+		}
+	}
 }
 </script>
 

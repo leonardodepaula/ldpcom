@@ -37,3 +37,7 @@ def test_access_token(current_user: models.User = Depends(dependencies.get_curre
     Test access token
     '''
     return current_user
+
+@router.get('/xxx')
+def test_access_token() -> Any:
+    return {"message": "teste"}
