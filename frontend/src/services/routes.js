@@ -4,6 +4,7 @@ import MainLayout from '../layouts/MainLayout.vue'
 import LoginLayout from '../layouts/LoginLayout.vue'
 
 import Artigos from '../views/Artigos.vue'
+import CreateArticle from '../views/CreateArticle.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -14,9 +15,14 @@ const router = createRouter({
       component: MainLayout,
       children: [
         {
-          path: '/artigos',
+          path: '/articles',
           name: 'artigos-list',
           component: Artigos
+        },
+        {
+          path: '/create-article',
+          name: 'artigos-create',
+          component: CreateArticle
         }
       ]
     },
