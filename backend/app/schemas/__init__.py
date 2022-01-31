@@ -1,3 +1,3 @@
 from .article import *
 from .user import *
-from .token import *
+from .autentication import *

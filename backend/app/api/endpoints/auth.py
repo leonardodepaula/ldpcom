@@ -12,8 +12,8 @@ from app.core.config import settings
 
 router = APIRouter()
 
-@router.post('/get-access-token', response_model=schemas.Token)
-def get_access_token(db: Session = Depends(dependencies.get_db), form_data: OAuth2PasswordRequestForm = Depends()) -> Any:
+@router.post('/login', response_model=schemas.Login)
+def login(db: Session = Depends(dependencies.get_db), form_data: OAuth2PasswordRequestForm = Depends()) -> Any:
     '''
     OAuth2 compatible token login, get an access token for future requests
     '''
@@ -24,20 +24,15 @@ def get_access_token(db: Session = Depends(dependencies.get_db), form_data: OAut
         raise HTTPException(status_code=400, detail='Inactive user')
     access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
     return {
-        'access_token': security.create_access_token(
-            user.id, expires_delta=access_token_expires
-        ),
+        'access_token': security.create_access_token(user.id, expires_delta=access_token_expires),
         'token_type': 'bearer',
+        'user': user
     }
 
 
-@router.post('/test-access-token', response_model=schemas.User)
-def test_access_token(current_user: models.User = Depends(dependencies.get_current_user)) -> Any:
+@router.post('/get-current-user', response_model=schemas.User)
+def get_current_user(current_user: models.User = Depends(dependencies.get_current_user)) -> Any:
     '''
-    Test access token
+    Get current user
     '''
     return current_user
-
-@router.get('/xxx')
-def test_access_token() -> Any:
-    return {"message": "teste"}

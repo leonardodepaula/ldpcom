@@ -40,7 +40,7 @@
 export default {
   computed: {
     sidebarCollapsed() {
-      return this.$store.getters['sidebarmodule/getSidebarStatus']
+      return this.$store.getters['sidebar/getSidebarStatus']
     }
   }
 }

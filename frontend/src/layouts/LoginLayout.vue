@@ -63,6 +63,11 @@ export default {
 				password: this.password
       })
 		}
+	},
+	mounted() {
+		if (this.$store.state.authentication.loggedStatus) {
+			this.$router.push({name: 'home'})
+		}
 	}
 }
 </script>
