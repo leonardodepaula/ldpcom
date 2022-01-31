@@ -5,7 +5,7 @@
     </a>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="h1 nav-link mb-0">Leonardo de Paula</a>
+        <router-link class="h1 navbar-text mb-0" :to="{name: 'home'}">Leonardo de Paula</router-link>
       </li>
     </ul>
     <div class="navbar-collapse collapse">
@@ -16,9 +16,9 @@
           </a>
 
           <div v-if="user">
-            <a class="nav-link d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-              <span class="h4 text-dark me-2">{{ user.full_name }}</span>
-              <span class="dropdown-toggle"></span>
+            <a class="nav-link d-none d-sm-inline-block navbar-text" href="#" data-bs-toggle="dropdown">
+              <span class="h4 navbar-text me-2">{{ user.full_name }}</span>
+              <span class="dropdown-toggle navbar-text"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-end">
               <a class="dropdown-item" @click="logout">Log out</a>
@@ -58,6 +58,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+.navbar-text {
+  color: #495057;
+  text-decoration: none;
+}
+ .navbar {
+   height: 80px;
+ }
 
 </style>

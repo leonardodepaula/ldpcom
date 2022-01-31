@@ -8,13 +8,13 @@
       <ul class="sidebar-nav mt-3">
 
         <li class="sidebar-item">
-          <router-link class="sidebar-link" to="/">
+          <router-link class="sidebar-link" :to="{name: 'home'}">
             <i class="align-middle" data-feather="home"></i> <span class="align-middle">Homepage</span>
           </router-link>
         </li>
 
         <li class="sidebar-item">
-          <router-link class="sidebar-link" to="/artigos">
+          <router-link class="sidebar-link" :to="{name: 'artigos-list'}">
             <i class="align-middle" data-feather="book"></i> <span class="align-middle">Artigos</span>
           </router-link>
         </li>
