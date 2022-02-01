@@ -44,7 +44,10 @@ export default {
     logout() {
 			this.$store.dispatch({
         type: 'authentication/logout'
-      })
+      });
+      if (this.$route.meta.requiresAuth) {
+        this.$router.push({name: 'login'})
+      }
 		},
 	},
   computed: {

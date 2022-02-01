@@ -6,6 +6,8 @@ import LoginLayout from '../layouts/LoginLayout.vue'
 import Artigos from '../views/Artigos.vue'
 import CreateArticle from '../views/CreateArticle.vue'
 
+import store from '../store/index.js'
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -22,7 +24,8 @@ const router = createRouter({
         {
           path: '/create-article',
           name: 'artigos-create',
-          component: CreateArticle
+          component: CreateArticle,
+          meta: { requiresAuth: true }
         }
       ]
     },
@@ -33,5 +36,18 @@ const router = createRouter({
     },
   ]
 });
+
+router.beforeEach((to, from, next) => {
+
+  const loginpath = window.location.pathname;
+  const loggedStatus = store.state.authentication.loggedStatus
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+
+  if (!loggedStatus && requiresAuth && loginpath != '/login') {
+    next({ name: 'login', query: {next: loginpath} });
+  } else {
+    next();
+  }
+})
 
 export default router;

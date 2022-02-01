@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import router from '../services/routes.js'
 export default {
 	data() {
 		return {
@@ -62,6 +63,11 @@ export default {
 				email: this.email,
 				password: this.password
       })
+			if (this.$route.query.next) {
+				router.push(this.$route.query.next);
+			} else {
+				router.push({name: 'home'});
+			}
 		}
 	},
 	mounted() {

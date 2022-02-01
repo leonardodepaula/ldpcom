@@ -1,5 +1,4 @@
 import api from '../../services/api.js';
-import router from '../../services/routes.js';
 
 const AuthenticationModule = {
   namespaced: true,
@@ -33,7 +32,6 @@ const AuthenticationModule = {
         if (response.data.access_token) {
           context.commit('setLogin', {token: response.data.access_token, user: response.data.user})
           api.defaults.headers.common = {'Authorization': `Bearer ${response.data.access_token}`}
-          router.push({name: 'home'})
         }
       })
       .catch((error) => {
