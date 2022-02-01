@@ -3,8 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import MainLayout from '../layouts/MainLayout.vue'
 import LoginLayout from '../layouts/LoginLayout.vue'
 
-import Artigos from '../views/Artigos.vue'
-import CreateArticle from '../views/CreateArticle.vue'
+import ArticleList from '../views/ArticleList.vue'
+import ArticleCreate from '../views/ArticleCreate.vue'
 
 import store from '../store/index.js'
 
@@ -17,15 +17,14 @@ const router = createRouter({
       component: MainLayout,
       children: [
         {
-          path: '/articles',
-          name: 'artigos-list',
-          component: Artigos
+          path: '/article',
+          name: 'article-list',
+          component: ArticleList
         },
         {
-          path: '/create-article',
-          name: 'artigos-create',
-          component: CreateArticle,
-          meta: { requiresAuth: true }
+          path: '/article/create',
+          name: 'article-create',
+          component: ArticleCreate,
         }
       ]
     },

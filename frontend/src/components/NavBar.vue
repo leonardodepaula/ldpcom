@@ -46,7 +46,8 @@ export default {
         type: 'authentication/logout'
       });
       if (this.$route.meta.requiresAuth) {
-        this.$router.push({name: 'login'})
+        const loginpath = window.location.pathname;
+        this.$router.push({name: 'login', query: {next: loginpath}})
       }
 		},
 	},

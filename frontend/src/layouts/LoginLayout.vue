@@ -48,7 +48,6 @@
 </template>
 
 <script>
-import router from '../services/routes.js'
 export default {
 	data() {
 		return {
@@ -64,15 +63,15 @@ export default {
 				password: this.password
       })
 			if (this.$route.query.next) {
-				router.push(this.$route.query.next);
+				this.$router.push(this.$route.query.next);
 			} else {
-				router.push({name: 'home'});
+				this.$router.go(-1)
 			}
 		}
 	},
 	mounted() {
 		if (this.$store.state.authentication.loggedStatus) {
-			this.$router.push({name: 'home'})
+			this.$router.go(-1)
 		}
 	}
 }

@@ -4,7 +4,6 @@ from pydantic import BaseModel
 from .user import User
 
 class ArticleBase(BaseModel):
-	slug: str
 	title: str
 	abstract: str
 	content: str
@@ -20,6 +19,7 @@ class ArticleUpdate(BaseModel):
 
 class ArticleInDBBase(ArticleBase):
 	id: int
+	slug: str
 	author_id: int
 
 	class Config:

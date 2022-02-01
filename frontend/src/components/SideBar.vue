@@ -14,7 +14,7 @@
         </li>
 
         <li class="sidebar-item">
-          <router-link class="sidebar-link" :to="{name: 'artigos-list'}">
+          <router-link class="sidebar-link" :to="{name: 'article-list'}">
             <i class="align-middle" data-feather="book"></i> <span class="align-middle">Artigos</span>
           </router-link>
         </li>

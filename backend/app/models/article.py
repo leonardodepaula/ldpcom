@@ -9,7 +9,7 @@ from app.db.base_class import Base
 
 class Article(Base):
     id = Column(Integer, primary_key=True, index=True)
-    slug = Column(String, index=True)
+    slug = Column(String(100), index=True)
 
     title = Column(String, nullable= False)
     abstract = Column(String, nullable= False)
