@@ -7,10 +7,10 @@ import "./assets/js/app.js"
 import "./assets/css/app.css"
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHome, faNewspaper, faIdCard, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faNewspaper, faIdCard, faEnvelope, faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faHome, faNewspaper, faIdCard, faEnvelope)
+library.add(faHome, faNewspaper, faIdCard, faEnvelope, faExclamationCircle)
 
 const app = createApp(App);
 

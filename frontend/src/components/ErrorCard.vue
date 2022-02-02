@@ -1,23 +1,23 @@
 <template>
   <div class="container d-flex flex-column">
-			<div class="row">
-				<div class="col-6 mx-auto d-table">
-					<div class="d-table-cell align-middle">
-						<div class="card">
-							<div class="card-body mt-5 mb-5">
-								<div class="text-center">
-									<i class="align-middle icon-size-alert" data-feather="alert-circle"></i><span class="align-middle font-alert ms-4">Erro <b>{{ error }}</b></span>
-									<p class="h3 mt-3">
-										{{ error_message }}
-									</p>
-								</div>
+		<div class="row">
+			<div class="col-6 mx-auto d-table">
+				<div class="d-table-cell align-middle">
+					<div class="card">
+						<div class="card-body mt-5 mb-5">
+							<div class="text-center">
+								<i class="align-middle icon-size-alert" data-feather="alert-circle"></i><span class="align-middle font-alert ms-4">Erro <b>{{ error }}</b></span>
+								<p class="h3 mt-3">
+									{{ error_message }}
+								</p>
 							</div>
 						</div>
-
 					</div>
+
 				</div>
 			</div>
 		</div>
+	</div>
 </template>
 
 <script>

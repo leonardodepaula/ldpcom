@@ -6,6 +6,7 @@ import LoginLayout from '../layouts/LoginLayout.vue'
 import ArticleList from '../views/ArticleList.vue'
 import ArticleCreate from '../views/ArticleCreate.vue'
 import ArticleRead from '../views/ArticleRead.vue'
+import PageNotFound from '../views/PageNotFound.vue'
 
 import store from '../store/index.js'
 
@@ -38,6 +39,11 @@ const router = createRouter({
       name: 'article-read',
       component: ArticleRead,
     },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'page-not-found',
+      component: PageNotFound
+    }
   ]
 });
 
