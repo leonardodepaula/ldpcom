@@ -9,25 +9,25 @@
 
         <li class="sidebar-item">
           <router-link class="sidebar-link" :to="{name: 'home'}">
-            <i class="align-middle" data-feather="home"></i> <span class="align-middle">Homepage</span>
+            <font-awesome-icon icon="home" /> <span class="align-middle">Homepage</span>
           </router-link>
         </li>
 
         <li class="sidebar-item">
           <router-link class="sidebar-link" :to="{name: 'article-list'}">
-            <i class="align-middle" data-feather="book"></i> <span class="align-middle">Artigos</span>
+            <font-awesome-icon icon="newspaper" /> <span class="align-middle">Artigos</span>
           </router-link>
         </li>
 
         <li class="sidebar-item">
           <a class="sidebar-link" href="#">
-            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Biografia</span>
+            <font-awesome-icon icon="id-card" /> <span class="align-middle">Biografia</span>
           </a>
         </li>
 
         <li class="sidebar-item">
           <a class="sidebar-link" href="#">
-            <i class="align-middle" data-feather="mail"></i> <span class="align-middle">Contato</span>
+            <font-awesome-icon icon="envelope" /> <span class="align-middle">Contato</span>
           </a>
         </li>
 
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+
 export default {
   computed: {
     sidebarCollapsed() {
