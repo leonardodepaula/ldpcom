@@ -16,29 +16,27 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: MainLayout,
-      children: [
-        {
-          path: '/article',
-          name: 'article-list',
-          component: ArticleList
-        },
-        {
-          path: '/article/create',
-          name: 'article-create',
-          component: ArticleCreate,
-          meta: { requiresAuth: true }
-        },
-        {
-          path: '/article/:year/:month/:slug',
-          name: 'article-read',
-          component: ArticleRead,
-        },
-      ]
     },
     {
       path: '/login',
       name: 'login',
       component: LoginLayout
+    },
+    {
+      path: '/article',
+      name: 'article-list',
+      component: ArticleList
+    },
+    {
+      path: '/article/create',
+      name: 'article-create',
+      component: ArticleCreate,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/article/:year/:month/:slug',
+      name: 'article-read',
+      component: ArticleRead,
     },
   ]
 });

@@ -1,33 +1,40 @@
 <template>
-  <div class="container-fluid main-cards">
-
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header bg-primary">
-            <h5 class="card-title mb-0 text-white text-justify">
-              {{ article.title }}
-            </h5>
-          </div>
-          <div class="card-body">
-            <span class="mb-0 text-justify" v-html="article.content"></span>
-          </div>
-          <div class="card-footer bg-light">
-            <span class="float-start">Publicação: {{ articleDate }}</span>
+  <main-layout>
+    <template v-slot:content>
+      <div class="container-fluid main-cards">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header bg-primary">
+                <h5 class="card-title mb-0 text-white text-justify">
+                  {{ article.title }}
+                </h5>
+              </div>
+              <div class="card-body">
+                <span class="mb-0 text-justify" v-html="article.content"></span>
+              </div>
+              <div class="card-footer bg-light">
+                <span class="float-start">Publicação: {{ articleDate }}</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-  </div>
+    </template>
+  </main-layout>
 </template>
 
 <script>
 import api from '../services/api.js';
 import moment from 'moment-timezone';
 
+import MainLayout from "../layouts/MainLayout.vue"
+
 export default {
   name: 'ArticleRead',
+  components: {
+    MainLayout,
+  },
   data() {
     return {
       article: {

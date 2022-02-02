@@ -7,7 +7,7 @@
 			<NavBar />
 
 			<main class="content">
-				<router-view></router-view>
+				<slot name="content"></slot>
 			</main>
 
 			<footer class="footer">
@@ -38,7 +38,7 @@ import SideBar from "../components/SideBar.vue"
 import NavBar from "../components/NavBar.vue"
 
 export default {
-  name: 'IndexView',
+  name: 'MainLayout',
   components: {
 		SideBar,
 		NavBar,
