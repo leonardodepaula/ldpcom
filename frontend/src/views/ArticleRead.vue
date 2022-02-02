@@ -24,7 +24,7 @@
 
 <script>
 import api from '../services/api.js';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 export default {
   name: 'ArticleRead',
@@ -40,11 +40,15 @@ export default {
   computed: {
     articleDate() {
       const data = moment.utc(this.article.published_at)
-      return data.format("DD/MM/YYYY HH:mm")
+      return data.tz('America/Sao_Paulo').format("DD/MM/YYYY HH:mm")
     }
   },
   beforeMount() {
-    api.get(`/article/${this.$route.params.slug}`).then(response => {
+    const year = this.$route.params.year;
+    const month = this.$route.params.month;
+    const slug = this.$route.params.slug;
+
+    api.get(`/article/${year}/${month}/${slug}`).then(response => {
       this.article = response.data;
     })
   }

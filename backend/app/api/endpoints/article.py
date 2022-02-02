@@ -26,12 +26,12 @@ def create_article(*, db: Session = Depends(dependencies.get_db), article_in: sc
     article = crud.article.create(db=db, obj_in=article_in, author_id=current_user.id, slug=slug)
     return article
 
-@router.get('/{slug}', response_model=schemas.Article)
-def read_article_by_slug(*, slug: str, db: Session = Depends(dependencies.get_db)) -> Any:
+@router.get('/{year}/{month}/{slug}', response_model=schemas.Article)
+def read_article_by_year_month_and_slug(*, year: int, month: int, slug: str, db: Session = Depends(dependencies.get_db)) -> Any:
     '''
-    Get a specific article by slug.
+    Get a specific article by year, month and slug.
     '''
-    article = crud.article.get_by_slug(db, slug=slug)
+    article = crud.article.get_by_year_month_and_slug(db, year=year, month=month, slug=slug)
     if not article:
         raise HTTPException(status_code=404, detail='Article not found.')
     else:

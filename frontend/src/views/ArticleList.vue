@@ -12,7 +12,7 @@
           </div>
           <div class="card-footer">
             <span class="float-start">Publicação: {{ formatDate(article.published_at) }}</span>
-            <router-link :to="{ name: 'article-read', params: {slug: article.slug}}">
+            <router-link :to="{ name: 'article-read', params: {year: getYear(article.published_at), month: getMonth(article.published_at), slug: article.slug}}">
               <button class="btn btn-primary btn-lg float-end">Ler</button>
             </router-link>
           </div>
@@ -43,6 +43,14 @@ export default {
     formatDate(date) {
       const dateForConversion = moment.utc(date)
       return dateForConversion.tz('America/Sao_Paulo').format("DD/MM/YYYY HH:mm")
+    },
+    getYear(date) {
+      const dateForConversion = moment.utc(date)
+      return dateForConversion.tz('America/Sao_Paulo').format("YYYY")
+    },
+    getMonth(date) {
+      const dateForConversion = moment.utc(date)
+      return dateForConversion.tz('America/Sao_Paulo').format("MM")
     }
   }
 }

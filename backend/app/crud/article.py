@@ -1,5 +1,6 @@
 from typing import Any, Dict, Optional, Union, List, TypeVar
 
+from sqlalchemy import extract
 from sqlalchemy.orm import Session
 
 from fastapi.encoders import jsonable_encoder
@@ -24,7 +25,7 @@ class CRUDArticle(CRUDBase[Article, ArticleCreate, ArticleUpdate]):
     def get_multi(self, db: Session, skip: int = 0, limit: int = 100) -> List[ModelType]:
         return db.query(self.model).order_by(self.model.published_at.desc()).offset(skip).limit(limit).all()
     
-    def get_by_slug(self, db: Session, slug: str) -> Optional[ModelType]:
-        return db.query(self.model).filter(self.model.slug == slug).first()
+    def get_by_year_month_and_slug(self, db: Session, year: int, month: int, slug: str) -> Optional[ModelType]:
+        return db.query(self.model).filter(extract('year', self.model.published_at) == year, extract('month', self.model.published_at) == month, self.model.slug == slug).first()
   
 article = CRUDArticle(Article)

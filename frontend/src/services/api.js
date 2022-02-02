@@ -11,13 +11,15 @@ const api = axios.create({
 api.interceptors.response.use(function (response) {
   return response;
   }, function (error) {
-    const anauthorizedErrors = [401, 403]
+  const anauthorizedErrors = [401, 403]
   if (anauthorizedErrors.includes(error.response.status)) {
     store.dispatch({
       type: 'authentication/logout'
     });
     const loginpath = window.location.pathname;
     router.push({name: 'login', query: {next: loginpath}})
+  } else if (error.response.status === 404) {
+    console.log('404')
   }
   });
 

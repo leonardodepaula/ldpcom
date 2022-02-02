@@ -29,10 +29,10 @@ const router = createRouter({
           meta: { requiresAuth: true }
         },
         {
-          path: '/article/:slug',
+          path: '/article/:year/:month/:slug',
           name: 'article-read',
           component: ArticleRead,
-        }
+        },
       ]
     },
     {
