@@ -10,7 +10,7 @@ from slugify import slugify
 router = APIRouter()
 
 @router.get('/', response_model=List[schemas.Article])
-def get_articles(db: Session = Depends(dependencies.get_db), skip: int = 0, limit: int = 100) -> Any:
+def read_articles(db: Session = Depends(dependencies.get_db), skip: int = 0, limit: int = 100) -> Any:
     '''
     Retrieve a list of articles.
     '''
@@ -26,12 +26,12 @@ def create_article(*, db: Session = Depends(dependencies.get_db), article_in: sc
     article = crud.article.create(db=db, obj_in=article_in, author_id=current_user.id, slug=slug)
     return article
 
-@router.get('/{id}', response_model=schemas.Article)
-def read_article_by_id(*, id: int, db: Session = Depends(dependencies.get_db), current_user: models.User = Depends(dependencies.get_current_active_user)) -> Any:
+@router.get('/{slug}', response_model=schemas.Article)
+def read_article_by_slug(*, slug: str, db: Session = Depends(dependencies.get_db)) -> Any:
     '''
-    Get a specific article by id.
+    Get a specific article by slug.
     '''
-    article = crud.article.get(db, id=id)
+    article = crud.article.get_by_slug(db, slug=slug)
     if not article:
         raise HTTPException(status_code=404, detail='Article not found.')
     else:

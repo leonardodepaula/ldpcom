@@ -23,5 +23,8 @@ class CRUDArticle(CRUDBase[Article, ArticleCreate, ArticleUpdate]):
     
     def get_multi(self, db: Session, skip: int = 0, limit: int = 100) -> List[ModelType]:
         return db.query(self.model).order_by(self.model.published_at.desc()).offset(skip).limit(limit).all()
+    
+    def get_by_slug(self, db: Session, slug: str) -> Optional[ModelType]:
+        return db.query(self.model).filter(self.model.slug == slug).first()
   
 article = CRUDArticle(Article)

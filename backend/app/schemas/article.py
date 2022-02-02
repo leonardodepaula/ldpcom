@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel
 
@@ -27,6 +28,7 @@ class ArticleInDBBase(ArticleBase):
   
 class Article(ArticleInDBBase):
 	author: User
+	published_at: datetime
 	pass
 
 class ArticleInDB(ArticleInDBBase):

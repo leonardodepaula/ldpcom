@@ -1,6 +1,5 @@
 <template>
   <div class="container-fluid main-cards">
-    <h1 class="h3 mb-3">Artigos</h1>
 
     <div class="row" v-for="article in articles" :key="article.id">
       <div class="col-12">
@@ -12,7 +11,9 @@
             {{ article.abstract }}
           </div>
           <div class="card-footer d-flex justify-content-end">
-            <button class="btn btn-primary btn-lg">Ler</button>
+            <router-link :to="{ name: 'article-read', params: {slug: article.slug}}">
+              <button class="btn btn-primary btn-lg">Ler</button>
+            </router-link>
           </div>
         </div>
       </div>
