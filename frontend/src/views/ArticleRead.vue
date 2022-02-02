@@ -5,13 +5,15 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header bg-primary">
-            <h5 class="card-title mb-0 text-white">
+            <h5 class="card-title mb-0 text-white text-justify">
               {{ article.title }}
-              <span class="float-end">Publicação: {{ articleDate }}</span>
             </h5>
           </div>
           <div class="card-body">
-            <span class="mb-0" v-html="article.content"></span>
+            <span class="mb-0 text-justify" v-html="article.content"></span>
+          </div>
+          <div class="card-footer bg-light">
+            <span class="float-start">Publicação: {{ articleDate }}</span>
           </div>
         </div>
       </div>

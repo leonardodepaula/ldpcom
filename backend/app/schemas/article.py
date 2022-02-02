@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel
 
-from .user import User
+from .user import UserPublic
 
 class ArticleBase(BaseModel):
 	title: str
@@ -27,7 +27,7 @@ class ArticleInDBBase(ArticleBase):
 		orm_mode = True
   
 class Article(ArticleInDBBase):
-	author: User
+	author: UserPublic
 	published_at: datetime
 	pass
 

@@ -26,3 +26,10 @@ class User(UserInDBBase):
 
 class UserInDB(UserInDBBase):
     hashed_password: str
+
+class UserPublic(BaseModel):
+    id: int
+    full_name: str
+
+    class Config:
+        orm_mode = True

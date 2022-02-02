@@ -12256,4 +12256,8 @@
     padding-left: 15%;
     padding-right: 15%;
   }
+
+  .text-justify {
+    text-align: justify;
+  }
   
