@@ -33,6 +33,6 @@ def read_article_by_year_month_and_slug(*, year: int, month: int, slug: str, db:
     '''
     article = crud.article.get_by_year_month_and_slug(db, year=year, month=month, slug=slug)
     if not article:
-        raise HTTPException(status_code=404, detail='Article not found.')
+        raise HTTPException(status_code=404, detail='Artigo não encontrado.')
     else:
         return article

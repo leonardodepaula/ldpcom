@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand navbar-light navbar-bg">
+  <nav class="navbar navbar-expand navbar-light navbar-bg border-bottom">
     <a class="sidebar-toggle js-sidebar-toggle" @click="toggleSidebar">
       <i class="hamburger align-self-center"></i>
     </a>
@@ -17,7 +17,7 @@
 
           <div v-if="user">
             <a class="nav-link d-none d-sm-inline-block navbar-text" href="#" data-bs-toggle="dropdown">
-              <span class="h4 navbar-text me-2">{{ user.full_name }}</span>
+              <span class="h3 navbar-text me-2">{{ user.full_name }}</span>
               <span class="dropdown-toggle navbar-text"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-end">
@@ -25,7 +25,7 @@
             </div>
           </div>
           <router-link :to="{ name: 'login' }" v-else>
-            <button class="btn btn-primary">Login</button>
+            <button class="btn btn-primary btn-lg"><span class="h4 text-white">Login</span></button>
           </router-link>
         </li>
       </ul>

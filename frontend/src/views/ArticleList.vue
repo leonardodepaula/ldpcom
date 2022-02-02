@@ -5,7 +5,7 @@
 
         <div class="row" v-for="article in articles" :key="article.id">
           <div class="col-12">
-            <div class="card">
+            <div class="card border">
               <div class="card-header bg-primary">
                 <h5 class="card-title mb-0 text-white text-justify">{{ article.title }}</h5>
               </div>

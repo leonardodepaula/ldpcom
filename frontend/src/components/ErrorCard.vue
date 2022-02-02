@@ -6,14 +6,15 @@
 					<div class="card">
 						<div class="card-body mt-5 mb-5">
 							<div class="text-center">
-								<i class="align-middle icon-size-alert" data-feather="alert-circle"></i><span class="align-middle font-alert ms-4">Erro <b>{{ error }}</b></span>
-								<p class="h3 mt-3">
-									{{ error_message }}
+								<font-awesome-icon icon="exclamation-circle" size="6x"/>
+								<p class="align-middle font-alert mt-2 mb-1">Erro <b>{{ errorCode }}</b></p>
+								<p class="h3 mt-0">
+									{{ errorMessage }}
 								</p>
+								<button class="btn btn-primary btn-lg mt-4" @click="goBack">Voltar</button>
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -24,12 +25,7 @@
 
 export default {
   name: 'ErrorCard',
-	data() {
-		return {
-			error: '404',
-			error_message: 'Página não encontrada.'
-		}
-	}
+	props: ['errorCode', 'errorMessage']
 }
 </script>
 

@@ -1,20 +1,25 @@
 <template>
   <main-layout>
     <template v-slot:content>
-      <div class="container-fluid main-cards">
+      <ErrorCard
+        :errorCode="this.error.status"
+        :errorMessage="this.error.data.detail"
+        v-if="error"
+      />
+      <div class="container-fluid main-cards" v-else>
         <div class="row">
           <div class="col-12">
-            <div class="card">
+            <div class="card border">
               <div class="card-header bg-primary">
                 <h5 class="card-title mb-0 text-white text-justify">
                   {{ article.title }}
                 </h5>
               </div>
-              <div class="card-body">
+              <div class="card-body border-bottom">
                 <span class="mb-0 text-justify" v-html="article.content"></span>
               </div>
               <div class="card-footer bg-light">
-                <span class="float-start">Publicação: {{ articleDate }}</span>
+                <span class="float-start"><b>Publicação: {{ articleDate }}</b></span>
               </div>
             </div>
           </div>
@@ -27,6 +32,7 @@
 <script>
 import api from '../services/api.js';
 import moment from 'moment-timezone';
+import ErrorCard from '../components/ErrorCard.vue'
 
 import MainLayout from "../layouts/MainLayout.vue"
 
@@ -34,6 +40,7 @@ export default {
   name: 'ArticleRead',
   components: {
     MainLayout,
+    ErrorCard
   },
   data() {
     return {
@@ -41,7 +48,8 @@ export default {
         title: '',
         author: '',
         content: ''
-      }
+      },
+      error: null
     }
   },
   computed: {
@@ -57,6 +65,10 @@ export default {
 
     api.get(`/article/${year}/${month}/${slug}`).then(response => {
       this.article = response.data;
+    })
+    .catch((error) => {
+      console.log(error.response)
+      this.error = error.response;
     })
   }
 }

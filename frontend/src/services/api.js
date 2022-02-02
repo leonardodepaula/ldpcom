@@ -18,8 +18,8 @@ api.interceptors.response.use(function (response) {
     });
     const loginpath = window.location.pathname;
     router.push({name: 'login', query: {next: loginpath}})
-  } else if (error.response.status === 404) {
-    console.log('404')
+  } else {
+    throw error;
   }
   });
 

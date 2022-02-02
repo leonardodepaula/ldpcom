@@ -26,7 +26,7 @@ def create_user(*, db: Session = Depends(dependencies.get_db), user_in: schemas.
     if user:
         raise HTTPException(
             status_code=400,
-            detail='The user with this username already exists in the system.',
+            detail='Email já cadastrado.',
         )
     user = crud.user.create(db, obj_in=user_in)
     return user
@@ -38,7 +38,7 @@ def read_user_by_id(*, id: int, db: Session = Depends(dependencies.get_db), curr
     '''
     user = crud.user.get(db, id=id)
     if not user:
-        raise HTTPException(status_code=404, detail='User not found.')
+        raise HTTPException(status_code=404, detail='Usuário não encontrado.')
     else:
         return user
 
@@ -49,7 +49,7 @@ def delete_user(*, db: Session = Depends(dependencies.get_db), id: int, current_
     '''
     user = crud.user.get(db=db, id=id)
     if not user:
-        raise HTTPException(status_code=404, detail='User not found')
+        raise HTTPException(status_code=404, detail='Usuário não encontrado.')
     else:
         user = crud.user.remove(db=db, id=id)
         return user
@@ -61,6 +61,6 @@ def update_user(*, db: Session = Depends(dependencies.get_db), id: int, user_in:
     '''
     user = crud.user.get(db, id=id)
     if not user:
-        raise HTTPException(status_code=404, detail='The user with this username does not exist in the system')
+        raise HTTPException(status_code=404, detail='Usuário não encontrado no sistema.')
     user = crud.user.update(db, db_obj=user, obj_in=user_in)
     return user
