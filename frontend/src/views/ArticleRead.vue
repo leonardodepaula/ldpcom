@@ -7,7 +7,7 @@
           <div class="card-header bg-primary">
             <h5 class="card-title mb-0 text-white">
               {{ article.title }}
-              <span class="float-end">Data de publicação: {{ articleDate }}</span>
+              <span class="float-end">Publicação: {{ articleDate }}</span>
             </h5>
           </div>
           <div class="card-body">
@@ -22,6 +22,7 @@
 
 <script>
 import api from '../services/api.js';
+import moment from 'moment';
 
 export default {
   name: 'ArticleRead',
@@ -36,7 +37,8 @@ export default {
   },
   computed: {
     articleDate() {
-      return this.article.published_at
+      const data = moment.utc(this.article.published_at)
+      return data.format("DD/MM/YYYY HH:mm")
     }
   },
   beforeMount() {
