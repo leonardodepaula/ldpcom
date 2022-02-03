@@ -25,7 +25,12 @@
 
 export default {
   name: 'ErrorCard',
-	props: ['errorCode', 'errorMessage']
+	props: ['errorCode', 'errorMessage'],
+	methods: {
+    goBack() {
+      this.$router.go(-1)
+    }
+  }
 }
 </script>
 

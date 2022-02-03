@@ -2,7 +2,7 @@
   <main-layout>
     <template v-slot:content>
       <div class="container-fluid main-cards">
-        <h1 class="h3 mb-3">Criar artigo</h1>
+        <h1 class="h2 mb-3">Criar artigo</h1>
 
         <div class="row">
           <div class="col-12">
@@ -58,6 +58,8 @@ import api from "../services/api.js"
 import TinyMCE from "../components/TinyMCE.vue"
 import MainLayout from "../layouts/MainLayout.vue"
 
+import { getYear, getMonth } from "../services/utils.js"
+
 export default {
   name: 'ArticleCreate',
   components: {
@@ -80,7 +82,13 @@ export default {
         content: this.content
       }
       api.post('/article/', requestBody, headers).then(response => {
-        console.log(response.data);
+        if (response.data) {
+          const year = getYear(response.data.published_at);
+          const month = getMonth(response.data.published_at);
+          const slug = response.data.slug;
+
+          this.$router.push({ path: `/article/${year}/${month}/${slug}`})
+        }
       })
     }
   }

@@ -20,6 +20,7 @@
               </div>
               <div class="card-footer bg-light">
                 <span class="float-start"><b>Publicação: {{ articleDate }}</b></span>
+                <button class="btn btn-primary float-end" @click="goBack">Voltar</button>
               </div>
             </div>
           </div>
@@ -67,9 +68,13 @@ export default {
       this.article = response.data;
     })
     .catch((error) => {
-      console.log(error.response)
       this.error = error.response;
     })
+  },
+  methods: {
+    goBack() {
+      this.$router.go(-1)
+    }
   }
 }
 </script>
