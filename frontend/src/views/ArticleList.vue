@@ -35,8 +35,8 @@
 
 <script>
 import api from '../services/api.js';
-import moment from 'moment-timezone';
 import MainLayout from "../layouts/MainLayout.vue"
+import { getYear, getMonth, formatDate } from "../services/utils.js"
 
 export default {
   name: 'ArticleList',
@@ -54,18 +54,10 @@ export default {
     })
   },
   methods: {
-    formatDate(date) {
-      const dateForConversion = moment.utc(date)
-      return dateForConversion.tz('America/Sao_Paulo').format("DD/MM/YYYY HH:mm")
-    },
-    getYear(date) {
-      const dateForConversion = moment.utc(date)
-      return dateForConversion.tz('America/Sao_Paulo').format("YYYY")
-    },
-    getMonth(date) {
-      const dateForConversion = moment.utc(date)
-      return dateForConversion.tz('America/Sao_Paulo').format("MM")
-    }
+    getYear: getYear,
+    getMonth: getMonth,
+    formatDate: formatDate
+
   },
   computed: {
     loggedStatus() {

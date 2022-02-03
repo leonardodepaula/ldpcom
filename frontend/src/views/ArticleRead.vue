@@ -19,7 +19,7 @@
                 <span class="mb-0 text-justify" v-html="article.content"></span>
               </div>
               <div class="card-footer bg-light">
-                <span class="float-start"><b>Publicação: {{ articleDate }}</b></span>
+                <span class="float-start"><b>Publicação: {{ formatDate(this.article.published_at) }}</b></span>
                 <button class="btn btn-primary float-end" @click="goBack">Voltar</button>
               </div>
             </div>
@@ -32,10 +32,9 @@
 
 <script>
 import api from '../services/api.js';
-import moment from 'moment-timezone';
 import ErrorCard from '../components/ErrorCard.vue'
-
 import MainLayout from "../layouts/MainLayout.vue"
+import { formatDate } from "../services/utils.js"
 
 export default {
   name: 'ArticleRead',
@@ -53,12 +52,6 @@ export default {
       error: null
     }
   },
-  computed: {
-    articleDate() {
-      const data = moment.utc(this.article.published_at)
-      return data.tz('America/Sao_Paulo').format("DD/MM/YYYY HH:mm")
-    }
-  },
   beforeMount() {
     const year = this.$route.params.year;
     const month = this.$route.params.month;
@@ -74,7 +67,8 @@ export default {
   methods: {
     goBack() {
       this.$router.go(-1)
-    }
+    },
+    formatDate: formatDate
   }
 }
 </script>
