@@ -7,6 +7,7 @@ import ArticleList from '../views/ArticleList.vue'
 import ArticleCreate from '../views/ArticleCreate.vue'
 import ArticleRead from '../views/ArticleRead.vue'
 import PageNotFound from '../views/PageNotFound.vue'
+import Biography from '../views/Biography.vue'
 
 import store from '../store/index.js'
 
@@ -40,10 +41,15 @@ const router = createRouter({
       component: ArticleRead,
     },
     {
+      path: '/biography',
+      name: 'biography',
+      component: Biography,
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'page-not-found',
       component: PageNotFound
-    }
+    },
   ]
 });
 

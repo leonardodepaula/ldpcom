@@ -19,10 +19,10 @@
           </router-link>
         </li>
 
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="#">
+        <li class="sidebar-item" :class="{active: biographyActive}">
+          <router-link class="sidebar-link" :to="{name: 'biography'}">
             <font-awesome-icon icon="id-card" /> <span class="align-middle">Biografia</span>
-          </a>
+          </router-link>
         </li>
 
         <li class="sidebar-item">
@@ -53,6 +53,13 @@ export default {
     articleActive() {
       const articleRoutes = ['article-list', 'article-read', 'article-create']
       if (articleRoutes.includes(this.$route.name)) {
+        return true
+      } else {
+        return false
+      }
+    },
+    biographyActive() {
+      if (this.$route.name === 'biography') {
         return true
       } else {
         return false
