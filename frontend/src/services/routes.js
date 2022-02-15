@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import MainLayout from '../layouts/MainLayout.vue'
 import LoginLayout from '../layouts/LoginLayout.vue'
 
 import ArticleList from '../views/ArticleList.vue'
@@ -8,6 +7,7 @@ import ArticleCreate from '../views/ArticleCreate.vue'
 import ArticleRead from '../views/ArticleRead.vue'
 import PageNotFound from '../views/PageNotFound.vue'
 import Biography from '../views/Biography.vue'
+import FrontPage from '../views/FrontPage.vue'
 
 import store from '../store/index.js'
 
@@ -17,7 +17,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: MainLayout,
+      component: FrontPage,
     },
     {
       path: '/login',

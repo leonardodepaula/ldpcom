@@ -10680,18 +10680,12 @@
     direction: ltr;
     flex: 1;
     max-width: 100vw;
-    padding: 1.5rem 1.5rem 0.75rem;
     width: 100vw;
   }
   @media (min-width: 768px) {
     .content {
       max-width: auto;
       width: auto;
-    }
-  }
-  @media (min-width: 992px) {
-    .content {
-      padding: 3rem 3rem 1.5rem;
     }
   }
   .navbar-nav .dropdown-menu {
@@ -12263,4 +12257,8 @@
 
   .text-bold {
     font-weight: bold;
+  }
+
+  .main-layout-container {
+    padding-top: var(--bs-gutter-x, 2.75rem);
   }

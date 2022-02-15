@@ -6,7 +6,8 @@
         :errorMessage="this.error.data.detail"
         v-if="error"
       />
-      <div class="container-fluid main-cards" v-else>
+      <div class="container-fluid main-cards main-layout-container" v-else>
+        
         <div class="row">
           <div class="col-12">
             <div class="card border">

@@ -1,9 +1,9 @@
 <template>
   <main-layout>
     <template v-slot:content>
-      <div class="container d-flex flex-column">
+      <div class="container-fluid main-cards main-layout-container">
         <div class="row">
-          <div class="card card-out mb-3 mt-3 pt-3">
+          <div class="card card-out mb-3 pt-3">
             <div class="card-body text-center">
               <img src="../assets/img/leonardodepaula.jpg" alt="Christina Mason" class="img-fluid rounded-circle mb-2" width="200" height="80" />
               <h2 class="mb-0">Leonardo de Paula</h2>

@@ -1,7 +1,7 @@
 <template>
   <main-layout>
     <template v-slot:content>
-      <div class="container-fluid main-cards">
+      <div class="container-fluid main-cards main-layout-container">
         <h1 class="h2 mb-3">Criar artigo</h1>
 
         <div class="row">
