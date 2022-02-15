@@ -45,7 +45,7 @@
                   <span class="text-muted">
                     Python 
                     <br>Web Development | Django | FastAPI | Vue.js | NGINX
-                    <br>Bancos de dados | SQL | MariaDB | PostgreSQL
+                    <br>Bancos de dados | SQL | MariaDB | PostgreSQL | SQLAlchemy
                     <br>Containers | Docker
                     <br>Data Science | Machine Learning | Numpy | Pandas | Scikit-Learn
                     <br>Direito Tributário | Conformidade tributária

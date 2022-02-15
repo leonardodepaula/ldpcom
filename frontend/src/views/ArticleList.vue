@@ -15,11 +15,11 @@
               <div class="card-header bg-primary">
                 <h5 class="card-title mb-0 text-white text-justify">{{ article.title }}</h5>
               </div>
-              <div class="card-body text-justify">
+              <div class="card-body border-bottom text-justify">
                 {{ article.abstract }}
               </div>
-              <div class="card-footer">
-                <span class="float-start">Publicação: {{ formatDate(article.published_at) }}</span>
+              <div class="card-footer bg-light d-flex justify-content-between align-items-center">
+                <span><b>Publicação: {{ formatDate(article.published_at) }}</b></span>
                 <router-link :to="{ name: 'article-read', params: {year: getYear(article.published_at), month: getMonth(article.published_at), slug: article.slug}}">
                   <button class="btn btn-primary float-end">Ler</button>
                 </router-link>

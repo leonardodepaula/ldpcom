@@ -15,12 +15,12 @@
                   {{ article.title }}
                 </h5>
               </div>
-              <div class="card-body border-bottom">
+              <div class="card-body border-bottom text-justify">
                 <span class="mb-0 text-justify" v-html="article.content"></span>
               </div>
-              <div class="card-footer bg-light">
-                <span class="float-start"><b>Publicação: {{ formatDate(this.article.published_at) }}</b></span>
-                <button class="btn btn-primary float-end" @click="goBack">Voltar</button>
+              <div class="card-footer bg-light d-flex justify-content-between align-items-center">
+                <span class=""><b>Publicação: {{ formatDate(this.article.published_at) }}</b></span>
+                <button class="btn btn-primary ml-auto" @click="goBack">Voltar</button>
               </div>
             </div>
           </div>
