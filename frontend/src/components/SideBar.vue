@@ -27,6 +27,12 @@
 
         <li class="sidebar-item">
           <a class="sidebar-link" href="#">
+            <font-awesome-icon icon="camera" /> <span class="align-middle">Fotografias</span>
+          </a>
+        </li>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="#">
             <font-awesome-icon icon="envelope" /> <span class="align-middle">Contato</span>
           </a>
         </li>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container d-flex flex-column">
+  <div class="container main-layout-container d-flex flex-column">
 		<div class="row">
 			<div class="col-6 mx-auto d-table">
 				<div class="d-table-cell align-middle">

@@ -1,7 +1,7 @@
 <template>
   <main-layout>
     <template v-slot:content>
-      <div class="content container-fluid main-cards main-layout-container">
+      <div class="container-fluid main-cards main-layout-container">
 
         <div class="row" v-if="loggedStatus">
           <router-link :to="{ name: 'article-create'}">
