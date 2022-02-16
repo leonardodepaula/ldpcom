@@ -1,5 +1,7 @@
 import secrets
-from pydantic import AnyHttpUrl, BaseSettings, PostgresDsn, validator
+import pathlib
+
+from pydantic import AnyHttpUrl, BaseSettings, PostgresDsn, validator, DirectoryPath
 from typing import Any, Dict, List, Optional, Union
 
 class Settings(BaseSettings):
@@ -21,6 +23,18 @@ class Settings(BaseSettings):
     BACKEND_CORS_ORIGINS: Union[str, List[AnyHttpUrl]] = []
     ENCRYPTION_ALGORITHM: str
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
+
+    # Directories
+    BASE_DIR: Optional[DirectoryPath] = None
+    STATIC_DIR: Optional[DirectoryPath] = None
+
+    @validator("BASE_DIR")
+    def get_base_dir(cls, v: str):
+        return pathlib.Path(__file__).parent.resolve().parent.absolute()
+    
+    @validator("STATIC_DIR")
+    def get_static_dir(cls, value, values):
+        return pathlib.Path(values['BASE_DIR'])/'static'
 
     @validator("BACKEND_CORS_ORIGINS", pre=True)
     def assemble_cors_origins(cls, v: Union[str, List[str]]) -> Union[List[str], str]:
