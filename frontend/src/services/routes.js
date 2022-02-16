@@ -7,7 +7,7 @@ import ArticleCreate from '../views/ArticleCreate.vue'
 import ArticleRead from '../views/ArticleRead.vue'
 import PageNotFound from '../views/PageNotFound.vue'
 import Biography from '../views/Biography.vue'
-import FrontPage from '../views/FrontPage.vue'
+import HomePage from '../views/HomePage.vue'
 
 import store from '../store/index.js'
 
@@ -17,7 +17,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: FrontPage,
+      component: HomePage,
     },
     {
       path: '/login',

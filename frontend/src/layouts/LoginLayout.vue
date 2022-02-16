@@ -14,11 +14,11 @@
 									<form @submit.prevent="login">
 										<div class="mb-3">
 											<label class="form-label">Email</label>
-											<input class="form-control form-control-lg" type="email" name="email" placeholder="Email" v-model="email"/>
+											<input class="form-control form-control-lg" type="email" name="email" placeholder="Email" v-model="email" required/>
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Senha</label>
-											<input class="form-control form-control-lg" type="password" name="password" placeholder="Senha" v-model="password"/>
+											<input class="form-control form-control-lg" type="password" name="password" placeholder="Senha" v-model="password" required/>
 											<small class="ms-2">
                         <a href="#">Esqueceu a senha?</a>
                       </small>
