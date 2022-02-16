@@ -4,7 +4,7 @@ services:
 
   db:
     image: postgres:latest
-    container_name: postgresql_dev
+    container_name: postgresql
     environment:
         - POSTGRES_USER=admin
         - POSTGRES_PASSWORD=admin
@@ -15,5 +15,20 @@ services:
     ports:
       - "5432:5432"
   
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    container_name: nginx
+    restart: always
+    environment:
+      TZ: "America/Sao_Paulo"
+    volumes:
+      - static_files:/static_files
+    ports:
+      - "80:80"
+      - "443:443"
+  
 volumes:
   postgresql_dev:
+  static_files:
