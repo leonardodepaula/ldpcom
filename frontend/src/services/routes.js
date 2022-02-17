@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import multiguard from 'vue-router-multiguard';
 
 import LoginLayout from '../layouts/LoginLayout.vue'
-
 import ArticleList from '../views/ArticleList.vue'
 import ArticleCreate from '../views/ArticleCreate.vue'
 import ArticleRead from '../views/ArticleRead.vue'
@@ -9,7 +9,7 @@ import PageNotFound from '../views/PageNotFound.vue'
 import Biography from '../views/Biography.vue'
 import HomePage from '../views/HomePage.vue'
 
-import store from '../store/index.js'
+import { loggingMiddleware, requireAuthMiddleware } from './middleware.js';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -18,52 +18,45 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomePage,
+      beforeEnter: multiguard([loggingMiddleware])
     },
     {
       path: '/login',
       name: 'login',
-      component: LoginLayout
+      component: LoginLayout,
+      beforeEnter: multiguard([loggingMiddleware])
     },
     {
       path: '/article',
       name: 'article-list',
-      component: ArticleList
+      component: ArticleList,
+      beforeEnter: multiguard([loggingMiddleware])
     },
     {
       path: '/article/create',
       name: 'article-create',
       component: ArticleCreate,
-      meta: { requiresAuth: true }
+      beforeEnter: multiguard([loggingMiddleware, requireAuthMiddleware]),
     },
     {
       path: '/article/:year/:month/:slug',
       name: 'article-read',
       component: ArticleRead,
+      beforeEnter: multiguard([loggingMiddleware])
     },
     {
       path: '/biography',
       name: 'biography',
       component: Biography,
+      beforeEnter: multiguard([loggingMiddleware])
     },
     {
       path: '/:pathMatch(.*)*',
       name: 'page-not-found',
-      component: PageNotFound
+      component: PageNotFound,
+      beforeEnter: multiguard([loggingMiddleware])
     },
   ]
 });
-
-router.beforeEach((to, from, next) => {
-
-  const loginpath = window.location.pathname;
-  const loggedStatus = store.state.authentication.loggedStatus
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
-
-  if (!loggedStatus && requiresAuth && loginpath != '/login') {
-    next({ name: 'login', query: {next: loginpath} });
-  } else {
-    next();
-  }
-})
 
 export default router;
