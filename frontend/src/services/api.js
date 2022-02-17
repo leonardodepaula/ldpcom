@@ -3,7 +3,7 @@ import store from '../store/index.js'
 import router from '../services/routes.js'
 
 const api = axios.create({
-  baseURL: 'http://localhost:8080/',
+  baseURL: `http://${process.env.VUE_APP_API_HOST}:8000/`,
 })
 
 // Headers

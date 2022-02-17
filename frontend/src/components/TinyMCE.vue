@@ -1,6 +1,6 @@
 <template>
   <editor
-    api-key="no-api-key"
+    :api-key="tinymce_api_key"
     :init="{
       branding: false,
       height: 500,
@@ -26,6 +26,11 @@ export default {
   components: {
     editor: Editor
   },
+  data() {
+    return {
+      tinymce_api_key: process.env.VUE_APP_TINYMCE_API_KEY
+    }
+  }
 }
 </script>
 
