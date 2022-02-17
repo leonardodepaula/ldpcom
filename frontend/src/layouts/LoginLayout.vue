@@ -23,9 +23,9 @@
                         <a href="#">Esqueceu a senha?</a>
                       </small>
 										</div>
-										<div class="mb-3" v-if="this.$store.getters['authentication/getErrorState']">
+										<div class="mb-3" v-if="loginError">
 											<div class="alert alert-danger" role="alert">
-												Erro no login.
+												{{ loginError }}
 											</div>
 										</div>
 										<div>
@@ -52,8 +52,13 @@ export default {
 	data() {
 		return {
 			email: '',
-			password: ''
+			password: '',
 		}
+	},
+	computed: {
+		loginError() {
+			return this.$store.getters['authentication/getLoginError']
+		},
 	},
 	methods: {
 		login() {
@@ -62,11 +67,6 @@ export default {
 				email: this.email,
 				password: this.password
       })
-			if (this.$route.query.next) {
-				this.$router.push(this.$route.query.next);
-			} else {
-				this.$router.go(-1)
-			}
 		}
 	},
 	mounted() {
