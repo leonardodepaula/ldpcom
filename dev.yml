@@ -15,6 +15,21 @@ services:
     ports:
       - "5432:5432"
   
+  backend:
+    build:
+      context: .
+      dockerfile: ./docker/backend/Dockerfile
+    container_name: backend
+    restart: always
+    environment:
+      TZ: "America/Sao_Paulo"
+    volumes:
+      - static_files:/backend/app/static
+    ports:
+      - "5555:5555"
+    depends_on:
+      - db
+  
   nginx:
     build:
       context: .
