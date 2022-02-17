@@ -3,8 +3,11 @@ import store from '../store/index.js'
 import router from '../services/routes.js'
 
 const api = axios.create({
-  baseURL: 'http://localhost:8000/',
+  baseURL: 'http://localhost:8080/',
 })
+
+// Headers
+api.defaults.headers.common = {'Access-Control-Allow-Origin': '*'}
 
 // Nas chamadas da API, verifica se houve erro relativo à autorização/autenticação
 // e encaminha o usuário para a página de login.

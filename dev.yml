@@ -26,7 +26,7 @@ services:
     volumes:
       - static_files:/backend/app/static
     ports:
-      - "5555:5555"
+      - "8080"
     depends_on:
       - db
   
@@ -39,7 +39,7 @@ services:
     environment:
       TZ: "America/Sao_Paulo"
     ports:
-    - "8080:8080"
+      - "80"
   
   nginx:
     build:
@@ -53,7 +53,12 @@ services:
       - static_files:/static_files
     ports:
       - "80:80"
+      - "8080:8080"
       - "443:443"
+      - "8443:8443"
+    depends_on:
+      - frontend
+      - backend
   
 volumes:
   postgresql_dev:

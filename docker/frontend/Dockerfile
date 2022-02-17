@@ -10,4 +10,4 @@ RUN npm install
 
 RUN npm run build
 
-CMD [ "http-server", "dist" ]
+CMD ["http-server", "dist", "--port", "80"]
