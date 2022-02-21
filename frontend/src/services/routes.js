@@ -8,6 +8,7 @@ import ArticleRead from '../views/ArticleRead.vue'
 import PageNotFound from '../views/PageNotFound.vue'
 import Biography from '../views/Biography.vue'
 import HomePage from '../views/HomePage.vue'
+import ContactCreate from '../views/ContactCreate.vue'
 
 import { loggingMiddleware, requireAuthMiddleware } from './middleware.js';
 
@@ -48,6 +49,12 @@ const router = createRouter({
       path: '/biography',
       name: 'biography',
       component: Biography,
+      beforeEnter: multiguard([loggingMiddleware])
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: ContactCreate,
       beforeEnter: multiguard([loggingMiddleware])
     },
     {
