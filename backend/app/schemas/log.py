@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from bson import ObjectId
 from pydantic import BaseModel
 from ipaddress import IPv4Address
@@ -20,7 +20,7 @@ class RequestData(BaseModel):
   
 class Log(BaseModel):
 	origin: str = 'backend'
-	date: datetime
+	date: datetime = datetime.now(tz=timezone.utc)
 	client: ClientData
 	request: RequestData
 
