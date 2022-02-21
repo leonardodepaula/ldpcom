@@ -17,12 +17,17 @@ class RequestData(BaseModel):
 	method: str
 	headers: dict
 	body: RequestBody
+
+class ResponseData(BaseModel):
+	headers: dict
+	status_code: int
   
 class Log(BaseModel):
 	origin: str = 'backend'
 	date: datetime = datetime.now(tz=timezone.utc)
 	client: ClientData
 	request: RequestData
+	response: ResponseData
 
 
 

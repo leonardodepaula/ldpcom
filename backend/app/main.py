@@ -4,6 +4,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.core.config import settings
 from app.api.base import api_router
+from app.core.middleware import RequestLogMiddleware
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -19,5 +20,7 @@ app.add_middleware(
     allow_methods=['*'],
     allow_headers=['*'],
 )
+
+app.add_middleware(RequestLogMiddleware)
 
 app.mount('/static', StaticFiles(directory='app/static'), name='static')
