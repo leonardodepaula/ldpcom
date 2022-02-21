@@ -2,6 +2,7 @@ import secrets
 import pathlib
 
 from pydantic import AnyHttpUrl, BaseSettings, PostgresDsn, validator, DirectoryPath
+from databases import DatabaseURL
 from typing import Any, Dict, List, Optional, Union
 
 class Settings(BaseSettings):
@@ -17,6 +18,13 @@ class Settings(BaseSettings):
     POSTGRES_PORT: str
     POSTGRES_DB: str
     SQLALCHEMY_DATABASE_URI: Optional[PostgresDsn] = None
+
+    # MongoDB
+    MONGO_USER: str
+    MONGO_PASSWORD: str
+    MONGO_HOST: str
+    MONGO_PORT: str
+    MONGODB_URI: str = None
 
     # Security
     SECRET_KEY: str = secrets.token_urlsafe(32)
@@ -56,6 +64,17 @@ class Settings(BaseSettings):
             port=values.get('POSTGRES_PORT'),
             path=f"/{values.get('POSTGRES_DB') or ''}",
         )
+    
+    @validator('MONGODB_URI', pre=True)
+    def assemble_mongodb_connection(cls, value, values) -> Any:
+        if isinstance(value, str):
+            return value
+        else:
+            mongo_user = values.get('MONGO_USER')
+            mongo_password = values.get('MONGO_PASSWORD')
+            mongo_host = values.get('MONGO_HOST')
+            mongo_port = values.get('MONGO_PORT')
+            return f'mongodb://{mongo_user}:{mongo_password}@{mongo_host}:{mongo_port}'
 
     class Config:
         env_file = '.env'

@@ -1,7 +1,14 @@
 import store from '../store/index.js'
+import api from './api.js'
 
 const loggingMiddleware = function(to, from, next) {
-  console.log(to.params, to.query, to.fullPath)
+  var headers = {'Content-Type': "application/json"}
+  var requestBody = {
+    path: to.fullPath,
+    params: to.params,
+    query: to.query
+  }
+  api.post('/log/', requestBody, headers)
   next();
 }
 

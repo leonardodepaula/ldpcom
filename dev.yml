@@ -15,6 +15,18 @@ services:
     ports:
       - "5432:5432"
   
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    restart: always
+    volumes:
+      - mongodb_dev:/data/db
+    ports:
+      - "27017:27017"
+
   backend:
     build:
       context: .
@@ -29,6 +41,7 @@ services:
       - "8080"
     depends_on:
       - db
+      - mongodb
   
   frontend:
     build:
@@ -62,4 +75,5 @@ services:
   
 volumes:
   postgresql_dev:
+  mongodb_dev:
   static_files:
