@@ -1,10 +1,9 @@
 from typing import Any, List
-from fastapi import APIRouter, Depends, HTTPException, UploadFile, File
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from app import crud, models, schemas
-from app.core import dependencies, utils
-from app.core.config import settings
+from app.core import dependencies
 
 from slugify import slugify
 
@@ -37,10 +36,3 @@ def read_article_by_year_month_and_slug(*, year: int, month: int, slug: str, db:
         raise HTTPException(status_code=404, detail='Artigo não encontrado.')
     else:
         return article
-
-@router.post('/uploadfile/')
-def upload_file(file: UploadFile = File(...)):
-
-    uploaded_file = utils.save_file(file)
-
-    return {'filename': uploaded_file}
