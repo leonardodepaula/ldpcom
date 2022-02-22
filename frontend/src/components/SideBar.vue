@@ -31,10 +31,10 @@
           </a>
         </li>
 
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="#">
+        <li class="sidebar-item" :class="{active: contactActive}">
+          <router-link class="sidebar-link" :to="{name: 'contact'}">
             <font-awesome-icon icon="envelope" /> <span class="align-middle">Contato</span>
-          </a>
+          </router-link>
         </li>
 
       </ul>
@@ -66,6 +66,13 @@ export default {
     },
     biographyActive() {
       if (this.$route.name === 'biography') {
+        return true
+      } else {
+        return false
+      }
+    },
+    contactActive() {
+      if (this.$route.name === 'contact') {
         return true
       } else {
         return false
