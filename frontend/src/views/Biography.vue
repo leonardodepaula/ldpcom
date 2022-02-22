@@ -6,7 +6,7 @@
           <div class="col-12">
             <div class="card card-out mb-3 pt-3">
               <div class="card-body text-center">
-                <img src="../assets/img/leonardodepaula.jpg" alt="Christina Mason" class="img-fluid rounded-circle mb-2" width="200" height="80" />
+                <img src="../assets/img/leonardodepaula.jpg" alt="Leonardo de Paula" class="img-fluid rounded-circle mb-2" width="200" height="80" />
                 <h2 class="mb-0">Leonardo de Paula</h2>
               </div>
               <hr class="my-0" />
