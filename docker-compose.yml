@@ -4,11 +4,8 @@ services:
 
   db:
     image: postgres:latest
-    container_name: postgresql
-    environment:
-        - POSTGRES_USER=admin
-        - POSTGRES_PASSWORD=admin
-        - POSTGRES_DB=ldpcom
+    env_file:
+      - ./databases/db.env
     restart: always
     volumes:
       - postgresql_dev:/var/lib/postgresql/data
@@ -17,10 +14,8 @@ services:
   
   mongodb:
     image: mongo
-    container_name: mongodb
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: admin
+    env_file:
+      - ./databases/mongodb.env
     restart: always
     volumes:
       - mongodb_dev:/data/db
@@ -31,7 +26,6 @@ services:
     build:
       context: .
       dockerfile: ./backend/Dockerfile
-    container_name: backend
     restart: always
     environment:
       TZ: "America/Sao_Paulo"
@@ -47,7 +41,6 @@ services:
     build:
       context: .
       dockerfile: ./frontend/Dockerfile
-    container_name: frontend
     restart: always
     environment:
       TZ: "America/Sao_Paulo"
@@ -58,7 +51,6 @@ services:
     build:
       context: .
       dockerfile: ./nginx/Dockerfile
-    container_name: nginx
     restart: always
     environment:
       TZ: "America/Sao_Paulo"
