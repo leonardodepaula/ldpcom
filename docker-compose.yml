@@ -42,6 +42,8 @@ services:
       context: .
       dockerfile: ./frontend/Dockerfile
     restart: always
+    volumes:
+      - frontend:/frontend/dist
     environment:
       TZ: "America/Sao_Paulo"
     ports:
@@ -56,6 +58,7 @@ services:
       TZ: "America/Sao_Paulo"
     volumes:
       - static_files:/static_files
+      - frontend:/usr/share/nginx/html
     ports:
       - "80:80"
       - "8000:8000"
@@ -67,3 +70,4 @@ volumes:
   db:
   mongodb:
   static_files:
+  frontend:
