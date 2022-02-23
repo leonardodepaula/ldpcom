@@ -57,6 +57,7 @@ services:
   
   certbot:
     image: certbot/certbot:latest
+    command: sh -c "certbot renew"
     volumes:
     - ./webserver/certbot/www/:/var/www/certbot/:rw
     - ./webserver/certbot/conf/:/etc/letsencrypt/:rw
