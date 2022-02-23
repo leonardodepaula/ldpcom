@@ -46,6 +46,7 @@ services:
       TZ: "America/Sao_Paulo"
     volumes:
       - static_files:/static_files
+      - /var/www/challenges/:/var/www/challenges/
     ports:
       - "80:80"
       - "8000:8000"
