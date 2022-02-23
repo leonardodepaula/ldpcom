@@ -12,8 +12,8 @@ FROM nginx:latest as production-stage
 RUN mkdir -p /var/www/challenges/
 
 # Config
-COPY ./nginx/conf/nginx-localhost.conf /etc/nginx/nginx.conf
-COPY ./nginx/conf/gzip.conf /etc/nginx/gzip.conf
+COPY ./webserver/conf/nginx-certbot.conf /etc/nginx/nginx.conf
+COPY ./webserver/conf/gzip.conf /etc/nginx/gzip.conf
 
 # Static
 COPY ./backend/app/static /static

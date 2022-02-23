@@ -37,21 +37,28 @@ services:
       - db
       - mongodb
   
-  nginx:
+  webserver:
     build:
       context: .
-      dockerfile: ./nginx/Dockerfile
+      dockerfile: ./webserver/Dockerfile
     restart: always
     environment:
       TZ: "America/Sao_Paulo"
     volumes:
-      - static_files:/static_files
-      - /var/www/challenges/:/var/www/challenges/
+      - static_files:/static_files:ro
+      - ./webserver/certbot/www:/var/www/certbot:ro
+      - ./webserver/certbot/conf/:/etc/nginx/ssl/:ro
     ports:
       - "80:80"
       - "8000:8000"
     depends_on:
       - backend
+  
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+    - ./webserver/certbot/www/:/var/www/certbot/:rw
+    - ./webserver/certbot/conf/:/etc/letsencrypt/:rw
   
 volumes:
   db:
